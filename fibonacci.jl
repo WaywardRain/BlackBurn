@@ -18,3 +18,18 @@ end
 @timeit mfib(1000)     "mfib1k" "Matrix fibonacci"
 @timeit mfib(1000_000) "mfib1M" "Matrix fibonacci"
 @timeit mfib(1048_576) "mfibP2" "Matrix fibonacci"   # 2^20
+
+# Basic:
+function fibonacci(n)
+    if n == 0
+        return (0,1)
+    end
+    p = fibonacci(n >> 1)
+    c = p[1] * (2 * p[2] - p[1])
+    d = p[1] * p[1] + p[2] * p[2]
+    if (n & 1 == 1)
+        return (d, c + d)
+    else
+        return (c, d)
+    end
+end
